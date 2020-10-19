@@ -1,0 +1,180 @@
+\section{Theoretical Background}
+
+\subsection{Concept Embedding Analysis}\label{sec:conceptanalysis}
+
+To understand the process flow of an algorithm, it is of great value
+to have access to interpretable intermediate outputs.
+% This is not available for DNNs: Their intermediate output of layers,
+% the latent spaces, are high-dimensional, entangled, and non-semantic,
+% meaning semantic information is only indirectly embedded.
+% The latent spaces of DNNs---the output spaces of sets of neurons or of
+% complete layers---usually are far from interpretable.
+% Instead, they are high-dimensional, entangled, and non-semantic, since
+% features are automatically extracted from correlations in the data.
+% However, information about semantic concepts may still be embedded in
+% the latent space of a DNN.
+The goal of concept embedding analysis is to answer \emph{whether},
+\emph{how well}, \emph{how}, and with what
+\emph{contribution to the reasoning}
+information about semantic concepts is embedded into the latent spaces
+(intermediate outputs) of DNNs, and to provide the result in an
+explainable way.
+Focus currently lies on finding embeddings in either the complete
+output of a layer (image-level concepts), or single pixels of an
+activation map of a convolutional DNN (concept segmentation).
+% 
+%%% whether
+To answer the \emph{whether}, one can try to find a decoder for the
+information about the concept of interest, the \emph{concept embedding}.
+This means, one is looking for a classifier on the latent space that
+can predict the presence of the concept.
+% An example are the mini-1-hidden-layer neural networks used in
+% \cite{fuchs_neural_2018}.
+% how well
+The performance of the classifier provides a measure of \emph{how well}
+the concept is embedded.
+% 
+%%% how
+For an explainable answer of \emph{how} a concept is embedded, the
+decoder should be easily interpretable.
+One constraint to this is introduced by the rich vector space
+structure of the space of semantic concepts respectively word vector spaces
+\cite{mikolov_linguistic_2013}:
+The decoder map from latent to semantic space should preserve at least
+a similarity measure.
+For example, the encodings of \enquote{cat} and \enquote{dog} should
+be quite similar, whereas that of a \enquote{car} should be relatively
+distant from the two.
+The methods in literature can essentially be grouped by their choice
+of distance measure $\langle -,-\rangle$ used on the latent vector space.
+A concept embedding classifier $E_c$ predicting the presence of concept $c$
+in the latent space $L$ then is of the form
+% \begin{gather*}
+%   \SwapAboveDisplaySkip
+$E_c(v)=\langle v_c,v\rangle > t_c$
+% \quad\text{for~}
+for $v\in L$,
+% \end{gather*}
+where $v_c\in L$ is the concept vector of the embedding,
+and $t_c\in \R$.% is a threshold for binarizing.
+
+Automated concept explanations \cite{ghorbani_towards_2019} uses
+$L_2$ distance as similarity measure. They discover concepts in an
+unsupervised fashion by k-means clustering of the latent space
+representations of input samples. The concept vectors of the
+discovered concepts are the cluster centers.
+% In \cite{yeh_completeness-aware_2020}, an improvement of the clustering
+% by further semantic constraints was suggested.
+% The proposed approach in \cite{gu_semantics_2019} also uses
+% clustering, but by cosine distance. Their method is supervised in that
+% they try to find a normalized concept vector for a concept given by
+% positive samples. An interesting finding was that the chosen
+% semantic concepts usually have a clearly dominant cluster in the
+% latent space.
+% For regularization, they binarize the entries in the latent space vectors to cluster.
+% 
+In TCAV~\cite{kim_interpretability_2018} it is claimed that the
+mapping from semantic to latent space should be linear for best
+interpretability. To achieve this, they suggest to use linear
+classifiers as concept embeddings. This means they try to find a
+separation hyperplane between the latent space representations of
+positive and negative samples of the concept.
+A normal vector of the hyperplane then is their concept vector,
+and the distance to the hyperplane
+% measured by the scalar product with the concept vector
+is used as distance measure.
+As method to obtain the embedding they use support vector machines (SVMs).
+TCAV further investigated the contribution of concepts to given output
+classes by sensitivity analysis.
+A very similar approach to TCAV, only instead relying on logistic
+regression, is followed by Net2Vec~\cite{fong_net2vec_2018}.
+% They directly built upon Network Dissection~\cite{bau_network_2017},
+% which tries to associate concepts to single filters in convolutional
+% DNNs (the unit vectors in the latent space of an activation map pixel).
+% Just as Network Dissection, Net2Vec
+As a regularization, they add a filter-specific cut-off before the
+concept embedding analysis to remove noisy small activations.
+% They apply a ReLU to the activation map of each filter with fixed
+% filter-specific threshold.
+% Other than TCAV, they constrain the hyperplane to run
+% through zero, \idest assume $t_c=0$, which may lead to worse embedding
+% performance.
+The advantage of Net2Vec over the SVMs in TCAV is that they can
+more easily be used in a convolutional setting: They used a
+1$\times$1-convolution to do a prediction of the concept for each
+activation map pixel, providing a segmentation of the concept.
+This was extended by \cite{schwalbe_concept_2020}, who suggested to
+allow larger convolution windows
+% , essentially doing a simplified concept detection.
+to ensure that the receptive field of the window can cover
+the complete concept. This avoids a focus on local patterns.
+% instead of \forexample the concept shape.
+% They also investigated some improvements on the optimization
+% technique.
+% 
+A measure that can be applied to concept vectors of the same layer
+regardless of the analysis method, is that of
+\emph{completeness} suggested in \cite{yeh_completeness-aware_2020}.
+They try to measure, how much of the information relevant to the final
+output of the DNN is covered by a chosen set of concepts vectors.
+% Their idea for measurement is as follows: If the layer output is
+% reduced to the linear sub-space spanned by the concept vectors, the
+% overall performance of the DNN should not drop significantly if the
+% set of concepts is complete.
+% This reduction was approximated by adding a bottleneck layer right
+% after the considered layer, where the unit vectors correspond to the
+% concepts.
+% The projection is defined by the concept vectors, the connection to
+% the succeeding layer is learned.
+They also suggested a metric to compare the attribution of each
+concept to the completeness score of a set of concepts.
+
+
+
+\subsection{Inductive Logic Programming}\label{sec:ilp}
+
+Inductive Logic Programming (ILP)~\cite{muggleton1991inductive} is a
+machine learning technique that builds a logic theory over positive
+and negative examples ($E^+$, $E^-$). The examples consist of symbolic
+background knowledge (BK) in the form of first-order logic predicates,
+\forexample \ilprule{contains(Example, Part), isa(Part, nose)}. Here the
+upper case symbols are variables and the lower case symbol is a
+constant. The given BK describes that example \ilprule{Example}
+contains a part \ilprule{Part} which is a nose. Based on the examples,
+a logic theory can be learned. The hypothesis language of this theory
+consists of logic Horn clauses that contain predicates from the BK. We
+write the Horn clauses as implication rules,
+\forexample
+\ilprule{
+  \begin{align*}
+    \text{face(Example) :- }& \text{contains(Example, Part), isa(Part, nose)}\;.
+  \end{align*}
+}
+For this work we obey the syntactic rules of the Prolog
+programming language. The \ilprule{:-} denotes the logic implication
+($\leftarrow$). We call the part before the implication the
+\emph{head} of a rule and the part after it the \emph{body} or
+\emph{preconditions} of a rule. 
+
+We use the framework Aleph~\cite{srinivasan2001aleph}
+for this work since it is a flexible and adaptive general purpose ILP
+toolbox. Aleph's built in algorithm attempts to induce a logic theory
+from the given BK to cover as many positive examples $E^+$ as possible
+while avoiding covering the negative examples $E^-$. The general
+algorithm of Aleph can be summarized as
+follows~\cite{srinivasan2001aleph}:
+
+\begin{enumerate}
+\item As long as positive examples exist, select one. Otherwise halt.
+\item Construct the most-specific clause that entails the selected example and is within the language constraints.
+\item Find a more general clause which is a subset of the current literals in the clause.
+\item Remove examples covered by the current clause.
+\item Repeat from step 1.
+\end{enumerate}
+
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "concept_embeddings_and_ilp"
+%%% End:

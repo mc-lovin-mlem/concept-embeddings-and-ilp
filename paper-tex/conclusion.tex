@@ -1,0 +1,84 @@
+\section{Conclusion and Future Work}
+
+Within the described simple experiment we showed that expressive,
+verbal surrogate models with high fidelity can be found for DNNs using
+the developed methodology. We suggest that the approach is promising
+and worth future research and optimization.
+
+% In future work we would like to validate some of the choices
+% for the concept analysis optimization on different setups, and
+% automate manual choosing routines.
+% % Auto-determine intersection thresholds
+% This includes the choice of the intersection encoding
+% thresholds, % which are currently manually balanced between information loss and noise in the ground truth.
+% % Validate loss
+% and weighting and balancing of the losses. % which may depend on the concept shape.
+% 
+%%% Variable concept size
+The proposed concept detection approach requires a concept to have
+little variance in its size. It should easily extend to
+a concept with several size categories (\forexample close by and far away
+faces) by merging the result for each category.
+% It would be interesting to test this and maybe find a way to
+% auto-determine the categorization.
+% The size information could also be of benefit if included into the
+% background knowledge.
+% 
+%%% Variable number of concept instances per image
+A next step for the background knowledge extraction would be to extend
+it to an arbitrary number of concept occurences per image, where
+currently the algorithm assumes a fixed amount (exactly one \ilprule{mouth}, one
+\ilprule{nose}, two \ilprule{eyes}). This could \forexample be achieved by allowing
+a maximum number per sliding window rather than an exact amount per image.
+% This would correspond to the intuition that an object (of given size)
+% cannot occur arbitrarily often in an image section.
+% 
+%%% Learned relations
+In cases, where the predicates cannot be pre-defined, one can learn
+the relations as functions on the DNN output from examples as
+demonstrated in \cite{donadello_logic_2017}.
+
+%%% How to select concepts?
+We further did not consider completeness
+(cf. Sec.~\ref{sec:conceptanalysis}) of the chosen concepts:
+They may not be well aligned with the decision relevant features used
+by the DNN, infringing fidelity of the surrogate model.
+We suggest two ways to remedy this:
+One could rely on (possibly less interpretable) concepts found via
+concept mining \cite{ghorbani_towards_2019}.
+Or, since ILP is good at rejecting irrelevant information, one can
+start with a much larger set of pre-defined, domain related concepts.
+% as done in \cite{losch_interpretability_2019}.
+We further
+% In both cases, the set of concepts may be over-complete: There are
+% several different solutions to the task relying on different sub-sets
+% of the concepts. Thus, we
+assume that best fidelity can only be achieved with the \emph{minimal}
+complete sub-set of most decision-relevant concepts, which fosters
+uniqueness of the solution.
+For a decision relevance measure see \forexample
+\cite{ghorbani_towards_2019}.
+
+%%% Other than visual tasks?
+It may be noted that the presented concept analysis approach is not
+tied to image classification: 
+As long as the ground truth for concepts in the form of masks or
+classification values is available, the method can be applied to any
+DNN latent space
+(imagine \forexample audio, text, or video classification).
+However, spatial or temporal positions and relations are currently
+inferred using the receptive field information of convolutional DNNs.
+This restriction may again be resolved by learning of relations.
+
+%%% User study
+Lastly, in order to examine the understandability of the induced
+explanation in a real world scenario, we need to let explanations be
+evaluated in a human user study. For this matter, subjective
+evaluation measures have to be specifically designed for verbal
+explanations.
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "concept_embeddings_and_ilp"
+%%% End:

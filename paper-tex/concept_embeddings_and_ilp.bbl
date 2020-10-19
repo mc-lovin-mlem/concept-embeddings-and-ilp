@@ -1,0 +1,168 @@
+\begin{thebibliography}{10}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+\providecommand{\doi}[1]{https://doi.org/#1}
+
+\bibitem{adadi2018peeking}
+Adadi, A., Berrada, M.: Peeking inside the black-box: {A} survey on explainable
+  artificial intelligence {(XAI)}. IEEE Access  \textbf{6},  52138--52160
+  (2018)
+
+\bibitem{arya2019one}
+Arya, V., Bellamy, R.K., Chen, P.Y., Dhurandhar, A., Hind, M., Hoffman, S.C.,
+  Houde, S., Liao, Q.V., Luss, R., Mojsilovi{\'c}, A., et~al.: One explanation
+  does not fit all: A toolkit and taxonomy of ai explainability techniques.
+  CoRR  (2019), \url{http://arxiv.org/abs/1909.03012}
+
+\bibitem{dai2019bridging}
+Dai, W.Z., Xu, Q., Yu, Y., Zhou, Z.H.: Bridging machine learning and logical
+  reasoning by abductive learning. In: Advances in Neural Information
+  Processing Systems. pp. 2811--2822 (2019)
+
+\bibitem{donadello_logic_2017}
+Donadello, I., Serafini, L., d'Avila Garcez, A.S.: Logic {{Tensor Networks}}
+  for {{Semantic Image Interpretation}}. In: Proc. 26th {{Int}}. {{Joint
+  Conf}}. {{Artificial Intelligence}}. pp. 1596--1602. {ijcai.org} (2017).
+  \doi{10.24963/ijcai.2017/221}
+
+\bibitem{fong_net2vec_2018}
+Fong, R., Vedaldi, A.: {{Net2Vec}}: {{Quantifying}} and explaining how concepts
+  are encoded by filters in deep neural networks. In: Proc. 2018 {{IEEE Conf}}.
+  {{Comput}}. {{Vision}} and {{Pattern Recognition}}. pp. 8730--8738. {IEEE}
+  (2018). \doi{10.1109/CVPR.2018.00910}
+
+\bibitem{ghorbani_towards_2019}
+Ghorbani, A., Wexler, J., Zou, J.Y., Kim, B.: Towards automatic concept-based
+  explanations. In: Advances in {{Neural Information Processing Systems}} 32.
+  pp. 9273--9282 (2019),
+  \url{http://papers.nips.cc/paper/9126-towards-automatic-concept-based-explanations}
+
+\bibitem{goodfellow2016deep}
+Goodfellow, I., Bengio, Y., Courville, A.: Deep learning. MIT press (2016)
+
+\bibitem{ji2015knowledge}
+Ji, G., He, S., Xu, L., Liu, K., Zhao, J.: Knowledge graph embedding via
+  dynamic mapping matrix. In: Proc. 53rd Ann. Meeting Association for
+  Computational Linguistics and 7th Int. Joint Conf. Natural Language
+  Processing (Vol. 1: Long Papers). pp. 687--696 (2015)
+
+\bibitem{khan2015multi}
+Khan, K., Mauro, M., Leonardi, R.: Multi-class semantic segmentation of faces.
+  In: Proc. 2015 IEEE Int. Conf. Image Processing (ICIP). pp. 827--831. {IEEE}
+  (2015)
+
+\bibitem{khan2017head}
+Khan, K., Mauro, M., Migliorati, P., Leonardi, R.: Head pose estimation through
+  multi-class face segmentation. In: Proc. 2017 IEEE Int. Conf. Multimedia and
+  Expo (ICME). pp. 175--180. {IEEE} (2017)
+
+\bibitem{kim_interpretability_2018}
+Kim, B., Wattenberg, M., Gilmer, J., Cai, C., Wexler, J., Viegas, F., Sayres,
+  R.: Interpretability beyond feature attribution: {{Quantitative}} testing
+  with concept activation vectors ({{TCAV}}). In: Proc. 35th {{Int}}. {{Conf}}.
+  {{Machine Learning}}. Proceedings of {{Machine Learning Research}}, vol.~80,
+  pp. 2668--2677. {PMLR} (2018),
+  \url{http://proceedings.mlr.press/v80/kim18d.html}
+
+\bibitem{krizhevsky_one_2014}
+Krizhevsky, A.: One weird trick for parallelizing convolutional neural
+  networks. CoRR  (2014), \url{http://arxiv.org/abs/1404.5997}
+
+\bibitem{lapuschkin2019unmasking}
+Lapuschkin, S., W{\"a}ldchen, S., Binder, A., Montavon, G., Samek, W.,
+  M{\"u}ller, K.R.: Unmasking clever hans predictors and assessing what
+  machines really learn. Nature communications  \textbf{10}(1), ~1--8 (2019)
+
+\bibitem{Michalski83a}
+Michalski, R.S., Carbonell, J.G., Mitchell, T.M. (eds.): Machine Learning -- An
+  Artificial Intelligence Approach. Tioga (1983)
+
+\bibitem{mikolov_linguistic_2013}
+Mikolov, T., Yih, W.t., Zweig, G.: Linguistic regularities in continuous space
+  word representations. In: Proc. 2013 {{Conf}}. {{North American Chapter
+  Association}} for {{Computational Linguistics}}: {{Human Language
+  Technologies}}. pp. 746--751. {Association for Computational Linguistics}
+  (2013), \url{https://www.aclweb.org/anthology/N13-1090}
+
+\bibitem{mitchell1986explanation}
+Mitchell, T.M., Keller, R.M., Kedar-Cabelli, S.T.: Explanation-based
+  generalization: {A} unifying view. Machine learning  \textbf{1}(1),  47--80
+  (1986)
+
+\bibitem{muggleton1991inductive}
+Muggleton, S.: Inductive logic programming. New generation computing
+  \textbf{8}(4),  295--318 (1991)
+
+\bibitem{muggleton2018ultra}
+Muggleton, S., Schmid, U., Zeller, C., Tamaddoni-Nezhad, A., Besold, T.:
+  Ultra-strong machine learning: {Comprehensibility} of programs learned with
+  ilp. Machine Learning  \textbf{107}(7),  1119--1140 (2018)
+
+\bibitem{rabold2019enriching}
+Rabold, J., Deininger, H., Siebers, M., Schmid, U.: Enriching visual with
+  verbal explanations for relational concepts--combining lime with aleph. arXiv
+  preprint arXiv:1910.01837  (2019)
+
+\bibitem{rabold2018explaining}
+Rabold, J., Siebers, M., Schmid, U.: Explaining black-box classifiers with ilp:
+  {Empowering} lime with aleph to approximate non-linear decisions with
+  relational rules. In: 2018 Int. Conf. Inductive Logic Programming. pp.
+  105--117. Springer (2018)
+
+\bibitem{ribeiro2016should}
+Ribeiro, M.T., Singh, S., Guestrin, C.: Why should i trust you?: Explaining the
+  predictions of any classifier. In: Proc. 22nd ACM SIGKDD Int. Conf. Knowledge
+  Discovery and Data Mining. pp. 1135--1144. ACM (2016)
+
+\bibitem{sabour2017dynamic}
+Sabour, S., Frosst, N., Hinton, G.E.: Dynamic routing between capsules. In:
+  Advances in neural information processing systems. pp. 3856--3866 (2017)
+
+\bibitem{samek2017explainable}
+Samek, W., Wiegand, T., M{\"u}ller, K.R.: Explainable artificial intelligence:
+  {Understanding}, visualizing and interpreting deep learning models. CoRR
+  (2017), \url{http://arxiv.org/abs/1708.08296}
+
+\bibitem{Schmid2018}
+Schmid, U.: Inductive programming as approach to comprehensible machine
+  learning. In: Proc. 6th Workshop KI \& Kognition (KIK-2018), co-located with
+  KI 2018 (2018), \url{http://ceur-ws.org/Vol-2194/schmid.pdf}
+
+\bibitem{schmid2020mutual}
+Schmid, U., Finzel, B.: Mutual explanations for cooperative decision making in
+  medicine. KI -- K{\"u}nstliche Intelligenz, Special Issue Challenges in
+  Interactive Machine Learning  \textbf{34} (2020)
+
+\bibitem{schwalbe_concept_2020}
+Schwalbe, G., Schels, M.: Concept enforcement and modularization as methods for
+  the {{ISO}} 26262 safety argumentation of neural networks. In: Proc. 10th
+  {{European Congress Embedded Real Time Software}} and {{Systems}} (2020),
+  \url{https://hal.archives-ouvertes.fr/hal-02442796}
+
+\bibitem{simonyan_very_2015}
+Simonyan, K., Zisserman, A.: Very deep convolutional networks for large-scale
+  image recognition. In: Proc. 3rd {{Int}}. {{Conf}}. {{Learning
+  Representations}} (2015), \url{http://arxiv.org/abs/1409.1556}
+
+\bibitem{srinivasan2001aleph}
+Srinivasan, A.: The {Aleph} manual (2004),
+  \url{https://www.cs.ox.ac.uk/activities/programinduction/Aleph}
+
+\bibitem{weitz2019deep}
+Weitz, K., Hassan, T., Schmid, U., Garbas, J.U.: Deep-learned faces of pain and
+  emotions: Elucidating the differences of facial expressions with the help of
+  explainable ai methods. tm-Technisches Messen  \textbf{86}(7-8),  404--412
+  (2019)
+
+\bibitem{xie_aggregated_2017}
+Xie, S., Girshick, R.B., Doll{\'a}r, P., Tu, Z., He, K.: Aggregated residual
+  transformations for deep neural networks. In: Proc. 2017 {{IEEE Conf}}.
+  {{Comput}}. {{Vision}} and {{Pattern Recognition}}. pp. 5987--5995. {IEEE}
+  (2017). \doi{10.1109/CVPR.2017.634}
+
+\bibitem{yeh_completeness-aware_2020}
+Yeh, C.K., Kim, B., Arik, S.O., Li, C.L., Pfister, T., Ravikumar, P.: On
+  completeness-aware concept-based explanations in deep neural networks. CoRR
+  (2020), \url{http://arxiv.org/abs/1910.07969}
+
+\end{thebibliography}

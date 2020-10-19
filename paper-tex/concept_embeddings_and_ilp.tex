@@ -1,0 +1,117 @@
+% This is samplepaper.tex, a sample chapter demonstrating the
+% LLNCS macro package for Springer Computer Science proceedings;
+% Version 2.20 of 2017/10/04
+% 
+\documentclass[runningheads]{llncs}
+% 
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,shorthands=off]{babel}
+\usepackage{csquotes}
+\usepackage{mathtools,amsmath,dsfont}
+
+\newcommand*{\forexample}{e.g.\ }
+\newcommand*{\idest}{i.e.\ }
+\newcommand*{\R}{\mathds{R}}
+\newcommand*{\ilprule}[1]{\small\ttfamily#1\normalfont\normalsize}
+
+\usepackage{graphicx}
+\graphicspath{{./figures/}}
+% Used for displaying a sample figure. If possible, figure files should
+% be included in EPS format.
+
+\usepackage[misc]{ifsym} % for corresponding author envelope symbol
+
+% tables:
+\usepackage{booktabs,multirow}
+\usepackage[%
+table-number-alignment = center,
+table-figures-integer = 1,
+table-figures-decimal = 3]{siunitx}
+
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+% 
+\usepackage{comment}
+% If you use the hyperref package, please uncomment the following line
+% to display URLs in blue roman font according to Springer's eBook style:
+% \renewcommand\UrlFont{\color{blue}\rmfamily}
+
+\begin{document}
+% 
+\title{Expressive Explanations of DNNs by Combining Concept Analysis with ILP}
+% 
+% \titlerunning{Abbreviated paper title}
+% If the paper title is too long for the running head, you can set
+% an abbreviated paper title here
+% 
+\author{Johannes Rabold \Letter\inst{1}\orcidID{0000-0003-0656-5881}
+  \and Gesina Schwalbe\inst{1,2}\orcidID{0000-0003-2690-2478}
+  \and Ute Schmid\inst{1}\orcidID{0000-0002-1301-0326}}
+% 
+\authorrunning{J. Rabold et al.}
+% First names are abbreviated in the running head.
+% If there are more than two authors, 'et al.' is used.
+% 
+\institute{
+  Cognitive Systems, University of Bamberg, Germany
+  \email{\{forename.lastname\}@uni-bamberg.de}
+  \and
+  Holistic Engineering and Technologies, Artificial Intelligence\\
+  Continental AG, Regensburg, Germany\\
+  \email{\{forename.lastname\}@continental-corporation.com}
+}
+
+% 
+\maketitle              % typeset the header of the contribution
+% 
+\begin{abstract}
+  % The abstract should briefly summarize the contents of the paper in
+  % 150--250 words.
+
+  Explainable AI has emerged to be a key component for black-box machine learning 
+  approaches in domains with a high demand for reliability or transparency.
+  Examples are medical assistant systems, and applications concerned with the
+  General Data Protection Regulation of the European Union, which features
+  transparency as a cornerstone.
+  Such demands require the ability to audit the rationale behind a classifier's decision.
+  While visualizations are the de facto standard of explanations, they
+  come short in terms of expressiveness in many ways:
+  They cannot distinguish between different attribute manifestations of visual features
+  (\forexample eye open vs. closed), and they cannot accurately describe the
+  influence of \emph{absence} of, and \emph{relations} between
+  features. An alternative would be more expressive symbolic surrogate models.
+  However, these require symbolic inputs, which are not readily available in most 
+  computer vision tasks.
+  In this paper we investigate how to overcome this:
+  We use inherent features learned by the network to build a global, expressive,
+  verbal explanation of the rationale of a feed-forward convolutional
+  deep neural network (DNN).
+  The semantics of the features are mined by a concept analysis 
+  approach trained on a set of human understandable visual concepts. 
+  The explanation is found by an Inductive Logic Programming (ILP) method and 
+  presented as first-order rules. We show that our explanation is faithful to the 
+  original black-box model%
+  \footnote{The code for our experiments is available at\\
+    \url{https://github.com/mc-lovin-mlem/concept-embeddings-and-ilp/tree/ki2020}}.
+
+  \keywords{Explainable AI
+    \and Concept Analysis
+    \and Concept Embeddings
+    \and Inductive Logic Programming}
+\end{abstract}
+% 
+% 
+% 
+% total number of pages (excluding references): 12 p.
+\input{introduction} % 0.5-1 p.
+\input{background} % 4p.
+\input{approach} % 1.5-2 p.
+\input{experiments_results} % 3-4 p.
+\input{conclusion}
+
+\bibliographystyle{splncs04}
+\bibliography{literature}
+
+\end{document}

@@ -1,0 +1,98 @@
+\section{Introduction}
+
+Machine learning went through several changes of research perspective
+since its beginnings more than fifty years ago. Initially, machine
+learning algorithms were inspired by human learning
+\cite{Michalski83a}.  Inductive Logic Programming (ILP)
+\cite{muggleton1991inductive} and explanation-based generalization
+\cite{mitchell1986explanation} were introduced as integrated
+approaches which combine reasoning in first-order logic and inductive
+learning.
+
+With the rise of statistical approaches to machine learning, focus
+shifted from human-like learning to optimizing learning for high
+predictive accuracy. Deep learning architectures
+\cite{goodfellow2016deep} resulted in data-intensive, black-box
+approaches with impressive performances in domains such as object
+recognition, machine translation, and game playing. However, since
+machine learning more and more is moving from the lab to the real
+world, researchers and practitioners alike realize that interpretable,
+human-like approaches to machine learning are necessary to allow
+developers as well as end-users to evaluate and understand classifier
+decisions or possibly also the learned models themselves. 
+
+
+Consequently there is a growing number of approaches to support
+explainability of black-box machine learning
+\cite{adadi2018peeking}. Explainable AI (XAI) approaches are proposed
+to support developers to recognize oversampling and problems with data
+quality such as number of available data, class imbalance, expensive
+labeling, and sampling biases
+\cite{lapuschkin2019unmasking,arya2019one}. For many application
+domains, it is a legal as well as an ethical obligation to make
+classifier decisions transparent and comprehensible to end-users who
+need to make sense of complex information, for instance in medical
+diagnosis, automotive safety, or quality control. 
+
+A main focus of research on explanations for image classifications is
+on visual explanations, that is,  highlighting of relevant pixels such
+as LRP \cite{samek2017explainable} or showing relevant areas in the
+image such as LIME \cite{ribeiro2016should}. However, visual
+explanations can only show which conjunction of information in an
+image is relevant. In many domains, more sophisticated information
+needs to be taken into account \cite{Schmid2018}:
+
+\begin{itemize}
+
+\item \textbf{Feature values:}
+  highlighting the area of the eye in an image is not helpful to
+  understand that it is important for the class decision that the lids
+  are tightened (indicating pain) in contrast to eyes which are wide
+  open (indicating startle, \cite{weitz2019deep});
+
+\item \textbf{Quantification:}
+  highlighting all blowholes on the supporting parts of a rim does not
+  make clear that the rim is not a reject because \emph{all} blowholes
+  are smaller than 0,5 mm;
+
+\item \textbf{Negation:}
+  highlighting the flower in the hand of a person does not transport
+  the information that this person is \emph{not} a terrorist because
+  he or she does \emph{not} hold a weapon; 
+
+\item \textbf{Relations:}
+  highlighting all windows in a building cannot help to discriminate
+  between a tower, where windows are \emph{above} each other and a
+  bungalow, where windows are \emph{beside} each other
+  \cite{rabold2019enriching};
+
+\item \textbf{Recursion:}
+  highlighting all stones within a circle of stones cannot transport
+  the information that there must be a sequence of an arbitrary number
+  of stones with increasing size \cite{rabold2018explaining}.
+
+\end{itemize}  
+
+Such information can only be expressed in an expressive language, for
+instance some subset of first-order logic
+\cite{muggleton2018ultra}. In previous work, it has been shown how ILP
+can be applied to replace the simple linear model agnostic
+explanations of LIME
+\cite{dai2019bridging,rabold2018explaining,rabold2019enriching,schmid2020mutual}. Alternatively,
+it is investigated how knowledge can be incorporated into deep
+networks. For example, capsule networks \cite{sabour2017dynamic} are
+proposed to model hierarchical relationships and embeddings of
+knowledge graphs allow to grasp relationships between entities
+\cite{ji2015knowledge}.
+
+In this paper, we investigate how symbolic knowledge can be extracted
+from the inner layers of a deep convolutional neural network to
+uncover and extract relational information to build an expressive
+global explanation for the network. In the following, we first
+introduce concept embedding analysis (to extract visual concepts) and
+ILP (to build the explanation). In section 3, the proposed approach to
+model-inherent generation of symbolic relational explanations % (MIGSyRE)
+is presented. We present a variety of experiments on a new ``Picasso''
+data set of faces with permuted positions of sub-parts such as eyes,
+mouth, and nose. We conclude with an outlook to extend this first,
+preliminary investigation in the future.

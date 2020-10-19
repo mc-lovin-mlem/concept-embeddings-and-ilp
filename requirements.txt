@@ -1,0 +1,11 @@
+pandas
+numpy
+scikit-image
+torchvision
+torch
+keras  # used for data loaders in finetuning
+tqdm
+pillow
+
+# requirements for concept analysis library
+-r sources/concept_analysis/ext_lib/requirements.txt

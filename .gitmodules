@@ -1,0 +1,6 @@
+[submodule "sources/concept_analysis/ext_lib"]
+	path = sources/concept_analysis/ext_lib
+	url = https://github.com/continental/hybrid_learning.git
+[submodule "sources/model/vggface-pytorch"]
+	path = sources/model/vggface_pytorch
+	url = https://github.com/claudio-unipv/vggface-pytorch.git
