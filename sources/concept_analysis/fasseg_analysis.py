@@ -156,7 +156,7 @@ DEFAULT_SETTINGS = dict(
     train_folder="train",
     # Any further arguments common to both train/val and test data set.
     # E.g. for PicassoMaskHandle, specify the class to take images from (e.g. 'neg'=negative only)
-    dataset_args={'cls': 'all'},
+    dataset_args={'restrict_cls_to': 'all'},
 
     # The size input images to the model must have in (width, height) in px
     input_image_size=(224, 224),

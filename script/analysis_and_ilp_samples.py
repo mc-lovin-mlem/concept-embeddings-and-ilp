@@ -28,6 +28,7 @@ from torch.nn import BCEWithLogitsLoss
 PROJECT_ROOT = "."
 sys.path.insert(0, os.path.join(PROJECT_ROOT))  # FIXME: add to sources.__init__?
 sys.path.insert(0, os.path.join(PROJECT_ROOT, "sources", "concept_analysis", "ext_lib"))
+import sources.model
 from sources.model.finetuning.model_loaders import MODELS_INFO
 from sources.model import finetuning
 from sources.concept_analysis import ilp_samples
@@ -117,16 +118,16 @@ if __name__ == "__main__":
     # ------------------------
     logger.info("Collecting model (.pkl file: %s) ...", model_pkl_file)
     if os.path.exists(model_pkl_file) and not args.force_finetune:
-        model = model_defaults.loader(state_dict=torch.load(model_pkl_file,
-                                                            map_location=args.device))
+        model: torch.nn.Module = model_defaults.loader(
+            state_dict=torch.load(model_pkl_file, map_location=args.device))
     else:
         logger.info("Starting model fine-tuning ...")
-        model = model_defaults.loader(pretrained=True)
+        model: torch.nn.Module = model_defaults.loader(pretrained=True)
         loader_args = dict(batch_size=args.finetune_batch_size,
                            picasso_root=args.picasso_dataset_root)
         loaders224 = {'train': finetuning.picasso_data_loader(split='train', **loader_args),
                       'val': finetuning.picasso_data_loader(split='test', **loader_args)}
-        model = finetuning.finetune(
+        model: torch.nn.Module = finetuning.finetune(
             model, device=args.device,
             finetune_layers=args.finetune_layers,
             pkl_file=model_pkl_file, loaders=loaders224,
@@ -136,7 +137,7 @@ if __name__ == "__main__":
     # GATHER MODEL IDENTIFIER:
     # ------------------------
     logger.info("Gathering model .pkl identifier ...")
-    model_prefix = model.model_id(model_name=args.model, model_pkl_file=model_pkl_file)
+    model_prefix = sources.model.model_id(model_name=args.model, model_pkl_file=model_pkl_file)
     ilp_samples_dir = "{}_ilp_samples".format(model_prefix)
 
     # CONDUCT CONCEPT ANALYSIS:

@@ -142,16 +142,16 @@ The activations lie in the `activations` folder next to the dataset root
 (currently: `dataset/fasseg/activations`).
 
 #### Concept analysis
-This is summarized in the script [script/analysis_and_ilp_samples.py](experiments/analysis_and_ilp_samples.py)
+This is summarized in the script [script/analysis_and_ilp_samples.py](script/analysis_and_ilp_samples.py)
 (the single steps are detailed below).
 Call this from project root with the mandatory `--model` argument:
 ```bash
-python experiments/analysis_and_ilp_samples.py --model "VGG16"
+python script/analysis_and_ilp_samples.py --model "VGG16"
 ```
 To see the available model specifier and other supported arguments,
 call the script with `--help`:
 ```bash
-python experiments/analysis_and_ilp_samples.py --help
+python script/analysis_and_ilp_samples.py --help
 ```
 The following scripts enable to do single steps out of the
 `analysis_and_ilp_samples.py` script

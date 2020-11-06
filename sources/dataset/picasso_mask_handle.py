@@ -28,12 +28,12 @@ class PicassoMaskHandle(FASSEGHandle):
     }
     """Mapping of part names to mask color encoding."""
 
-    def __init__(self, dataset_root: str, part_name: str, cls: str = 'all',
+    def __init__(self, dataset_root: str, part_name: str, restrict_cls_to: str = 'all',
                  **kwargs):
         """
         :param dataset_root: the directory under which to find the images;
         :param part_name: the part to select in the masks; key in PICASSO_COLORS
-        :param cls: the classification class to restrict samples to; either 'pos', 'neg', or 'all'
+        :param restrict_cls_to: the classification class to restrict samples to; either 'pos', 'neg', or 'all'
         :param kwargs: parameters for BaseDataset
         """
         super(PicassoMaskHandle, self).__init__(
@@ -53,12 +53,12 @@ class PicassoMaskHandle(FASSEGHandle):
             cls_root = os.path.join(self.dataset_root, picasso_cls)
             img_fns[picasso_cls] = [os.path.join(picasso_cls, fn) for fn in os.listdir(cls_root)
                                     if os.path.isfile(os.path.join(cls_root, fn))]
-        if not cls or cls == 'all':
+        if not restrict_cls_to or restrict_cls_to == 'all':
             all_img_fns: List[str] = [*img_fns['pos'], *img_fns['neg']]
-        elif cls in img_fns.keys():
-            all_img_fns = img_fns[cls]
+        elif restrict_cls_to in img_fns.keys():
+            all_img_fns = img_fns[restrict_cls_to]
         else:
-            raise ValueError('Unknown cls option {}'.format(cls))
+            raise ValueError('Unknown restrict_cls_to option {}'.format(restrict_cls_to))
         # Discard mask files:
         self.img_fns = [fn for fn in all_img_fns if "pic_" in fn]
         # Shuffle:
