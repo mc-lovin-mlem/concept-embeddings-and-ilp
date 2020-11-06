@@ -46,9 +46,9 @@ data_chunks: List[Tuple[np.ndarray, np.ndarray, np.ndarray]] = []
 """To become list of tuples (original image, image with face removed, segmentation of orig image)"""
 
 for f in origs_files:
-    orig_img = io.imread(ORIGS_PATH + f)
-    no_face_img = io.imread(NO_FACES_PATH + f)
-    label_img = io.imread(LABELS_PATH + f)
+    orig_img = io.imread(os.path.join(ORIGS_PATH, f))
+    no_face_img = io.imread(os.path.join(NO_FACES_PATH, f))
+    label_img = io.imread(os.path.join(LABELS_PATH, f))
     data_chunks.append(tuple((orig_img, no_face_img, label_img)))
 
 
